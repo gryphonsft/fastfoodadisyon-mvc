@@ -1,6 +1,6 @@
-﻿namespace fastfoodadisyon_mvc.Models
+﻿namespace fastfoodadisyon_mvc.DTOs
 {
-    public class Users
+    public class UserResponse
     {
         public int Id { get; set; }
         public string userName { get; set; } = string.Empty;
