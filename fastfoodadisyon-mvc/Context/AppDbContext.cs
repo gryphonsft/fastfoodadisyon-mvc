@@ -9,6 +9,10 @@ namespace fastfoodadisyon_mvc.Context
         {
         }
         public DbSet<Users> Users { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Menu> Menu { get; set; }
+        public DbSet<MenuProduct> MenuProduct { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -1,11 +1,11 @@
-﻿namespace fastfoodadisyon_mvc.Models
+﻿using fastfoodadisyon_mvc.Models.Main;
+
+namespace fastfoodadisyon_mvc.Models
 {
-    public class Users
+    public class Users : BaseEntity
     {
-        public int Id { get; set; }
         public string userName { get; set; } = string.Empty;
         public string passWord { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
-        public DateTime CreatedAt { get; set; }
     }
 }

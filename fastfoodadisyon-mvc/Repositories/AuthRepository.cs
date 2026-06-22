@@ -23,7 +23,6 @@ namespace fastfoodadisyon_mvc.Repositories
         public async Task CreateAsync(Users users)
         {
             await _context.AddAsync(users);
-            await _context.SaveChangesAsync();
         }
         public async Task UpdateAsync(Users users)
         {
