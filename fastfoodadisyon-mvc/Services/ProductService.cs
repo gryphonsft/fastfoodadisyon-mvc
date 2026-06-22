@@ -10,7 +10,7 @@ namespace fastfoodadisyon_mvc.Services
         private readonly ProductRepository _productRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ProductService(ProductRepository productRepository,IUnitOfWork unitOfWork)
+        public ProductService(ProductRepository productRepository, IUnitOfWork unitOfWork)
         {
             _productRepository = productRepository;
             _unitOfWork = unitOfWork;
@@ -49,6 +49,42 @@ namespace fastfoodadisyon_mvc.Services
 
             await _productRepository.CreateAsync(product);
             await _unitOfWork.SaveChangesAsync();
+        }
+        public async Task UpdateAsync(int Id, ProductUpdate dto)
+        {
+            var request = await _productRepository.GetByIdAsync(Id);
+
+            if (request == null)
+                throw new Exception("Ürün bulunamadı");
+
+            request.Name = request.Name;
+            request.CategoryID = request.CategoryID;
+
+            await _productRepository.UpdateAsync(request);
+            await _unitOfWork.SaveChangesAsync();
+        }
+        public async Task DeleteByIdAsync(int Id)
+        {
+            var product = await _productRepository.GetByIdAsync(Id);
+
+            if (product == null)
+                throw new Exception("Ürün bulunamadı");
+
+            await _productRepository.DeleteByIdAsync(Id);
+            await _unitOfWork.SaveChangesAsync();
+        }
+        public async Task<IEnumerable<ProductDto>> SearchAsync(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return Enumerable.Empty<ProductDto>();
+
+            var products = await _productRepository.SearchAsync(value);
+
+            return products.Select(x => new ProductDto
+            {
+                Name = x.Name,
+                CreatedAt = x.CreatedAt
+            });
         }
     }
 }
