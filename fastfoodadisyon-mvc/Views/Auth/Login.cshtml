@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Giriş Yap";
+    Layout = null;
+}
+    <title>FastFood Adisyon — Giriş</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/Login/Login.css" />
+
+    <div class="container-fluid p-0">
+        <div class="row g-0 min-vh-100">
+
+            <!-- Sol: Marka ve tanıtım -->
+            <div class="col-lg-7 login-hero text-white d-flex align-items-center p-4 p-lg-5">
+                <div class="lava-bg" aria-hidden="true">
+                    <span class="lava-blob lava-blob-1"></span>
+                    <span class="lava-blob lava-blob-2"></span>
+                    <span class="lava-blob lava-blob-3"></span>
+                    <span class="lava-blob lava-blob-4"></span>
+                </div>
+                <div class="login-hero-content w-100" style="max-width: 640px; margin: 0 auto;">
+
+                    <span class="badge brand-badge text-white mb-4 px-3 py-2">
+                        Adisyon &amp; Restoran Yönetimi
+                    </span>
+
+                    <h1 class="display-5 fw-bold mb-3 lh-sm">
+                        FastFood Adisyon<br />
+                        <span class="hero-accent">Yönetim Paneli</span>
+                    </h1>
+
+                    <p class="lead mb-5 pe-lg-4" style="opacity: 0.92;">
+                        Siparişlerinizi, masalarınızı ve günlük ciroyu tek ekrandan yönetin.
+                        Personeliniz için hızlı, güvenli ve anlaşılır giriş deneyimi.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sağ: Giriş formu -->
+            <div class="col-lg-5 d-flex align-items-center justify-content-center p-4 p-md-5">
+                <div class="card login-card w-100" style="max-width: 420px;">
+                    <div class="card-header-bar"></div>
+                    <div class="card-body p-4 p-md-5">
+
+                        <div class="text-center mb-4">
+
+                            <h2 class="fw-bold mb-1">Hoş Geldiniz</h2>
+                            <p class="text-muted mb-0">
+                                Devam etmek için hesap bilgilerinizi girin.
+                            </p>
+                        </div>
+
+                        <form method="post" asp-action="AuthPage" asp-controller="Auth">
+
+                            <div class="mb-3">
+                                <label for="username" class="form-label fw-semibold">Kullanıcı Adı</label>
+                                <input type="text" id="username" name="Username" class="form-control form-control-lg"
+                                       placeholder="örn. kasa1" autocomplete="username" required />
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="password" class="form-label fw-semibold">Şifre</label>
+                                <input type="password" id="password" name="Password"
+                                       class="form-control form-control-lg" placeholder="••••••••"
+                                       autocomplete="current-password" required />
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-login btn-lg w-100 text-white">
+                                Giriş Yap
+                            </button>
+
+                        </form>
+
+                        <hr class="my-4" />
+
+                        <p class="text-center text-muted small mb-0">
+                            © @DateTime.Now.Year <a href="https://github.com/gryphonsft" style="text-decoration:none;">gryphonsft</a>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>

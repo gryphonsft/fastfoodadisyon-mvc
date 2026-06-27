@@ -1,5 +1,6 @@
 ﻿using fastfoodadisyon_mvc.DTOs;
 using fastfoodadisyon_mvc.Interfaces;
+using fastfoodadisyon_mvc.Models;
 
 namespace fastfoodadisyon_mvc.Services
 {
@@ -20,6 +21,29 @@ namespace fastfoodadisyon_mvc.Services
             {
                 Name = x.Name
             }).ToList();
+        }
+        public async Task<CategoryDto?> GetByIdAsync(int Id)
+        {
+            var category = await _categoryRepository.GetByIdAsync(Id);
+
+            if (category == null)
+                return null;
+
+            return new CategoryDto
+            {
+                Name = category.Name
+            };
+        }
+
+        public async Task CreateAsync(CategoryCreate dto)
+        {
+            var category = new Category
+            {
+                Name = dto.Name,
+                CreatedAt = DateTime.UtcNow
+            };
+            await _categoryRepository.CreateAsync(category);
+            await _unitOfWork.SaveChangesAsync();
         }
     }
 }

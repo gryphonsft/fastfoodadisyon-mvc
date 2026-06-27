@@ -6,7 +6,9 @@ namespace fastfoodadisyon_mvc.Models
     {
         public string Name { get; set; } = string.Empty;
 
-        public string CategoryID { get; set; } = string.Empty;
-        public Category? Category { get; set; } 
+        public int CategoryID { get; set; }
+        public Category? Category { get; set; }
+
+        public ICollection<MenuProduct> MenuProducts { get; set; } = new List<MenuProduct>();
     }
 }

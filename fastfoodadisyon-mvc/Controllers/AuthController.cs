@@ -4,9 +4,9 @@ namespace fastfoodadisyon_mvc.Controllers
 {
     public class AuthController : Controller
     {
-        public IActionResult AuthPage()
+        public IActionResult Login()
         {
-            return View("Page");
+            return View("Login");
         }
     }
 }
